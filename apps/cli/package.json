@@ -1,0 +1,38 @@
+{
+    "name": "ev0-cli",
+    "module": "src/index.ts",
+    "version": "1.0.0",
+    "type": "module",
+    "main": "dist/index.js",
+    "bin": {
+        "ev0": "dist/index.js"
+    },
+    "scripts": {
+        "dev": "bun run src/index.ts",
+        "build": "bun run build.ts"
+    },
+    "dependencies": {
+        "commander": "^12.0.0",
+        "execa": "7.1.1",
+        "gradient-string": "^2.0.2",
+        "inquirer": "^9.2.21",
+        "loading-cli": "^1.1.2",
+        "zod": "^3.23.8"
+    },
+    "devDependencies": {
+        "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
+        "@types/bun": "latest",
+        "@types/gradient-string": "^1.1.6",
+        "@types/inquirer": "^9.0.7",
+        "@typescript-eslint/eslint-plugin": "^7.9.0",
+        "@typescript-eslint/parser": "^7.9.0",
+        "eslint": "8.57.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-unused-imports": "^3.2.0",
+        "prettier": "^3.2.5",
+        "typescript": "^5.4.5"
+    },
+    "peerDependencies": {
+        "typescript": "^5.0.0"
+    }
+}

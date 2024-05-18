@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 216, 12%, 84%;
+        --foreground: 300, 3%, 6%;
+
+        --card: 0, 0%, 100%;
+        --card-foreground: 300, 3%, 6%;
+
+        --popover: 0, 0%, 100%;
+        --popover-foreground: 300, 3%, 6%;
+
+        --primary: 257, 72%, 50%;
+        --primary-foreground: 216, 12%, 84%;
+
+        --secondary: 210, 40%, 96.1%;
+        --secondary-foreground: 222.2, 47.4%, 11.2%;
+
+        --muted: 210, 40%, 96.1%;
+        --muted-foreground: 0, 0%, 25%;
+
+        --accent: 257, 72%, 40%;
+        --accent-foreground: 0, 0%, 100%;
+
+        --destructive: 0, 72%, 51%;
+        --destructive-foreground: 300, 92%, 95%;
+
+        --border: 0, 0%, 0%;
+
+        --input: 214.3, 31.8%, 91.4%;
+        --input-hover: 0, 0%, 100%;
+
+        --ring: 222.2, 84%, 4.9%;
+
+        --radius: 0.5rem;
+    }
+
+    .dark,
+    :root[class~="dark"] {
+        --background: 240, 5%, 4%;
+        --foreground: 0, 0%, 100%;
+
+        --card: 240, 3%, 9%;
+        --card-foreground: 0, 0%, 100%;
+
+        --popover: 240, 8%, 5%;
+        --popover-foreground: 300, 92%, 95%;
+
+        --primary: 272, 77%, 47%;
+        --primary-foreground: 0, 0%, 100%;
+
+        --secondary: 103, 55%, 53%;
+        --secondary-foreground: 240, 5%, 4%;
+
+        --muted: 240, 1%, 16%;
+        --muted-foreground: 0, 0%, 70%;
+
+        --accent: 214, 100%, 78%;
+        --accent-foreground: 240, 5%, 4%;
+
+        --destructive: 356, 80%, 37%;
+        --destructive-foreground: 0, 0%, 100%;
+
+        --border: 0, 0%, 100%;
+
+        --input: 240, 1%, 16%;
+        --input-hover: 240, 1%, 20%;
+
+        --ring: 212.7, 26.8%, 83.9%;
+    }
+
+    .bg_glow {
+        animation: bg_glow 5s infinite linear;
+    }
+
+    @keyframes bg_glow {
+        0% {
+            box-shadow: 0 0 200px 200px rgba(131, 131, 230, 0.2);
+        }
+
+        50% {
+            box-shadow: 0 0 200px 200px rgba(131, 131, 230, 0.35);
+        }
+
+        100% {
+            box-shadow: 0 0 200px 200px rgba(131, 131, 230, 0.2);
+        }
+    }
+
+    * {
+        @apply border-border/10;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+
+    ::-webkit-scrollbar {
+        @apply size-[7px] rounded-full bg-background;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply rounded-md bg-accent;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        @apply bg-accent/80;
+    }
+}

@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 216, 12%, 84%;
+        --foreground: 300, 3%, 6%;
+
+        --card: 0, 0%, 100%;
+        --card-foreground: 300, 3%, 6%;
+
+        --popover: 0, 0%, 100%;
+        --popover-foreground: 300, 3%, 6%;
+
+        --primary: 257, 72%, 50%;
+        --primary-foreground: 216, 12%, 84%;
+
+        --secondary: 210, 40%, 96.1%;
+        --secondary-foreground: 222.2, 47.4%, 11.2%;
+
+        --muted: 210, 40%, 96.1%;
+        --muted-foreground: 0, 0%, 25%;
+
+        --accent: 257, 72%, 40%;
+        --accent-foreground: 0, 0%, 100%;
+
+        --destructive: 0, 72%, 51%;
+        --destructive-foreground: 300, 92%, 95%;
+
+        --border: 0, 0%, 0%;
+
+        --input: 214.3, 31.8%, 91.4%;
+        --input-hover: 0, 0%, 100%;
+
+        --ring: 222.2, 84%, 4.9%;
+
+        --radius: 0.5rem;
+    }
+
+    .dark,
+    :root[class~="dark"] {
+        --background: 240, 8%, 5%;
+        --foreground: 300, 92%, 95%;
+
+        --card: 240, 8%, 10%;
+        --card-foreground: 300, 92%, 95%;
+
+        --popover: 240, 8%, 5%;
+        --popover-foreground: 300, 92%, 95%;
+
+        --primary: 265, 67%, 43%;
+        --primary-foreground: 300, 92%, 95%;
+
+        --secondary: 217.2, 32.6%, 17.5%;
+        --secondary-foreground: 300, 92%, 95%;
+
+        --muted: 217.2, 32.6%, 17.5%;
+        --muted-foreground: 0, 0%, 75%;
+
+        --accent: 240, 8%, 12%;
+        --accent-foreground: 300, 92%, 95%;
+
+        --destructive: 0, 62.8%, 30.6%;
+        --destructive-foreground: 300, 92%, 95%;
+
+        --border: 0, 0%, 100%;
+
+        --input: 240, 8%, 15%;
+        --input-hover: 240, 8%, 20%;
+
+        --ring: 212.7, 26.8%, 83.9%;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border/10;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+
+    ::-webkit-scrollbar {
+        @apply bg-background size-[7px] rounded-full;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply bg-accent rounded-md;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        @apply bg-accent/80;
+    }
+}
