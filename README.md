@@ -1,81 +1,120 @@
-# Turborepo starter
+<p align="center">
+  <picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./apps/web/public/EV0%20--dark.svg">
+  <img src="./apps/web/public/EV0%20--dark.svg" width="130" alt="Logo for EV0">
+</picture>
+</p>
 
-This is an official starter Turborepo.
+<h1 align="center">
+  create-ev0-app
+</h1>
 
-## Using this example
+<p align="center">
+    The best way to start your next Next.js project in a type-safe environment.
+</p>
 
-Run the following command:
+<p align="center">
+   Get started with the <a rel="noopener noreferrer" target="_blank" href="https://ev0.vercel.app">EV0 Stack</a> by running <code>npx ev0@latest init</code>
+</p>
 
-```sh
-npx create-turbo@latest
+<div align="center">
+
+[![Discord](https://img.shields.io/discord/1133372614165934160?color=%235865F2&label=Discord&logo=discord&logoColor=%23fff)](https://dsc.gg/drvgo)
+
+</div>
+
+<p align="center">
+  <picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./apps/web/public/og.webp">
+  <img src="./apps/web/public/og.webp" alt="EV0 OG">
+</picture>
+</p>
+
+## Table of Contents
+
+-   [Table of Contents](#table-of-contents)
+-   [The EV0 Stack](#the-ev0-stack)
+-   [What is EV0?](#what-is-ev0)
+-   [Why EV0?](#why-ev0)
+-   [Getting Started](#getting-started)
+-   [Community](#community)
+-   [Contributors](#contributors)
+
+## The EV0 Stack
+
+The EV0 Stack is a full-stack TypeScript framework that helps you build fast, robust, and maintainable web applications using the latest technologies. It is built on top of the following technologies:
+
+-   **[Next.js](https://nextjs.org/)**: A React framework that enables server-side rendering and static site generation.
+-   **[TypeScript](https://www.typescriptlang.org/)**: A superset of JavaScript that adds static types to the language.
+-   **[Tailwind CSS](https://tailwindcss.com/)**: A utility-first CSS framework for rapidly building custom designs.
+-   **[ShadCN UI](https://ui.shadcn.com/)**: A collection of accessible, reusable, and customizable UI components.
+-   **[tRPC](https://trpc.io/)**: A TypeScript-first framework for building scalable and type-safe APIs.
+-   **[Supabase](https://supabase.io/)**: An open-source alternative to Firebase that provides a real-time database and authentication system.
+-   **[Clerk (Coming Soon)](https://clerk.com/)**: A user authentication and authorization service that provides a secure and customizable login experience.
+-   **[PlanetScale (Coming Soon)](https://planetscale.com/)**: A serverless database platform that provides a scalable and reliable database solution.
+-   **[MongoDB (Coming Soon)](https://www.mongodb.com/)**: A NoSQL database that provides a flexible and scalable data storage solution.
+-   **[Drizzle](https://orm.drizzle.team/)**: A TypeScript-first ORM that provides a type-safe and efficient way to interact with databases.
+-   **[Prisma (Coming Soon)](https://www.prisma.io/)**: A modern database toolkit that provides a type-safe and efficient way to interact with databases.
+-   **[UploadThing](https://uploadthing.com/)**: A file upload service that provides a secure and efficient way to upload files to the cloud.
+
+## What is EV0?
+
+So, what is EV0? A template? A framework? A stack? The answer is all of the above. It's a template because it provides a starting point for your project. It's a framework because it provides a set of tools and conventions for building web applications. And it's a stack because it combines multiple technologies to create a cohesive development experience.
+
+## Why EV0?
+
+There are many reasons to use the EV0 Stack, but here are a few of the most compelling:
+
+1. **Type Safety**: EV0 is built on top of TypeScript, which provides static types for JavaScript. This means you can catch errors at compile time rather than at runtime, leading to more robust and maintainable code.
+
+2. **Performance**: EV0 uses Next.js, which enables server-side rendering and static site generation. This means your web applications will load faster and perform better, leading to a better user experience.
+
+3. **Developer Experience**: EV0 provides a set of tools and conventions that make it easy to build web applications. This includes a collection of accessible, reusable, and customizable UI components, a type-safe API framework, and a real-time database and authentication system.
+
+4. **Scalability**: EV0 is designed to scale with your project. Whether you're building a small prototype or a large production application, EV0 provides the tools and infrastructure you need to succeed.
+
+5. **Community**: EV0 has a vibrant and active community of developers who are passionate about building web applications. Whether you have a question, need help, or want to contribute, the EV0 community is here to support you.
+
+## Getting Started
+
+To get started with the EV0 Stack, you can run the following command:
+
+```bash
+npx ev0@latest init
+# or
+yarn create ev0@latest init
+# or
+pnpm dlx ev0@latest init
+#or
+bunx --bun ev0@latest init
 ```
 
-## What's inside?
+This will prompt you to choose a project name, select the features you want to include (e.g., authentication, database, etc.), and configure the project settings. Once you've answered all the questions, the command will generate a new project in the current directory with the specified settings.
 
-This Turborepo includes the following packages/apps:
+> To quickly setup a new project with the default settings, you can run `npx ev0@latest init -d`.
 
-### Apps and Packages
+## Community
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+If you have any questions, need help, or want to contribute, you can join the EV0 community on Discord. We're here to support you and help you succeed with the EV0 Stack.
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+[![Discord](https://img.shields.io/discord/1133372614165934160?color=%235865F2&label=Discord&logo=discord&logoColor=%23fff)](https://dsc.gg/drvgo)
 
-### Utilities
+## Contributors
 
-This Turborepo has some additional tools already setup for you:
+Thanks goes to these wonderful people.
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+<a href="https://github.com/itsdrvgo/create-ev0-app/graphs/contributors">
+  <p align="center">
+  <img src="https://contrib.rocks/image?repo=itsdrvgo/create-ev0-app" />
+  </p>
+</a>
 
-### Build
+<p align="center">
+  Made with <a rel="noopener noreferrer" target="_blank" href="https://contrib.rocks">contrib.rocks</a>
+</p>
 
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+<p align="center">
+  <a rel="noopener noreferrer" target="_blank" href="https://vercel.com/?utm_source=itsdrvo&utm_campaign=oss">
+    <img height="34px" src="https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg" alt="Powered by vercel">
+  </a>
+</p>
