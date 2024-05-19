@@ -9,7 +9,7 @@ To get started with the EV0 Stack, you can run the following command:
 ```bash
 npx create-ev0-app@latest init
 # or
-yarn create create-ev0-app@latest init
+yarn create-ev0-app@latest init
 # or
 pnpm dlx create-ev0-app@latest init
 # or
@@ -53,7 +53,7 @@ There are many reasons to use the EV0 Stack, but here are a few of the most comp
 
 This will prompt you to choose a project name, select the features you want to include (e.g., authentication, database, etc.), and configure the project settings. Once you've answered all the questions, the command will generate a new project in the current directory with the specified settings.
 
-> To quickly setup a new project with the default settings, you can run `npx ev0@latest init -d`.
+> To quickly setup a new project with the default settings, you can run `npx create-ev0-app@latest -d`.
 
 ## Community
 
