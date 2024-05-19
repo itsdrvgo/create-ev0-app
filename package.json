@@ -1,31 +1,65 @@
 {
-  "name": "create-ev0-app",
-  "private": true,
-  "scripts": {
-    "build": "turbo build",
-    "build:cli": "turbo --filter=cli build",
-    "build:web": "turbo --filter=web build",
-    "dev": "turbo dev",
-    "dev:cli": "turbo --filter=cli dev",
-    "dev:web": "turbo --filter=web dev",
-    "start": "turbo start",
-    "start:cli": "turbo --filter=cli start",
-    "start:web": "turbo --filter=web start",
-    "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
-  },
-  "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
-    "prettier": "^3.2.5",
-    "turbo": "latest"
-  },
-  "engines": {
-    "node": ">=18"
-  },
-  "packageManager": "npm@10.5.0",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+    "name": "create-ev0-app",
+    "version": "0.0.0",
+    "description": "The best CLI for creating, building, and deploying your Next.js apps",
+    "author": {
+        "name": "itsdrvgo",
+        "url": "https://itsdrvgo.me/"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/itsdrvgo/create-ev0-app.git",
+        "directory": "apps/cli"
+    },
+    "keywords": [
+        "cli",
+        "ev0",
+        "nextjs",
+        "create-next-app",
+        "next",
+        "react",
+        "react-framework",
+        "reactjs",
+        "typescript",
+        "t3-app",
+        "t3",
+        "tailwindcss",
+        "drizzle",
+        "prisma",
+        "supabase",
+        "vercel"
+    ],
+    "license": "MIT",
+    "scripts": {
+        "build": "turbo build",
+        "build:cli": "cd apps/cli && bun run build",
+        "build:web": "turbo --filter=web build",
+        "dev": "turbo dev",
+        "dev:cli": "cd apps/cli && bun run dev",
+        "dev:web": "turbo --filter=web dev",
+        "start": "turbo start",
+        "start:cli": "cd apps/cli && bun run start",
+        "start:web": "turbo --filter=web start",
+        "lint": "turbo lint",
+        "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+        "release": "changeset version",
+        "pub:beta": "cd apps/cli && bun run pub:beta",
+        "pub:release": "cd apps/cli && bun run pub:release"
+    },
+    "devDependencies": {
+        "@changesets/changelog-github": "^0.5.0",
+        "@changesets/cli": "^2.27.2",
+        "@repo/eslint-config": "*",
+        "@repo/typescript-config": "*",
+        "prettier": "^3.2.5",
+        "turbo": "latest"
+    },
+    "engines": {
+        "node": ">=18.17.0"
+    },
+    "packageManager": "npm@10.5.0",
+    "workspaces": [
+        "apps/*",
+        "packages/*"
+    ]
 }

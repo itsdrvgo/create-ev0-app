@@ -37,7 +37,7 @@ export function convertNumberToShortForm(count: number) {
 }
 
 export function generateInitCommand(packageManager: PackageManager) {
-    const command = "ev0@latest init";
+    const command = "create-ev0-app@latest init";
 
     switch (packageManager) {
         case PackageManager.BUN:

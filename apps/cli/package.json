@@ -1,15 +1,12 @@
 {
-    "name": "ev0-cli",
-    "module": "src/index.ts",
-    "version": "0.1.2",
-    "type": "module",
-    "main": "dist/index.js",
-    "bin": {
-        "ev0": "dist/index.js"
-    },
-    "author": {
-        "name": "itsdrvgo",
-        "url": "https://itsdrvgo.me/"
+    "name": "create-ev0-app",
+    "version": "0.1.0",
+    "description": "The best CLI for creating, building, and deploying your Next.js apps",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/itsdrvgo/create-ev0-app.git",
+        "directory": "apps/cli"
     },
     "keywords": [
         "cli",
@@ -22,12 +19,41 @@
         "reactjs",
         "typescript",
         "t3-app",
-        "t3"
+        "t3",
+        "tailwindcss",
+        "drizzle",
+        "prisma",
+        "supabase",
+        "vercel"
     ],
-    "license": "MIT",
+    "type": "module",
+    "exports": "./dist/index.js",
+    "bin": {
+        "create-ev0-app": "./dist/index.js"
+    },
+    "files": [
+        "dist",
+        "template",
+        "LICENSE",
+        "README.md",
+        "package.json"
+    ],
+    "engines": {
+        "node": ">=18.17.0"
+    },
+    "author": {
+        "name": "itsdrvgo",
+        "url": "https://itsdrvgo.me/"
+    },
     "scripts": {
         "dev": "bun run src/index.ts",
-        "build": "bun run build.ts"
+        "build": "bun run build.ts",
+        "lint": "eslint . --ext .ts",
+        "lint:fix": "bun run lint --fix",
+        "release": "changeset version",
+        "pub:beta": "bun run build && npm publish --tag beta",
+        "pub:next": "bun run build && npm publish --tag next",
+        "pub:release": "bun run build && npm publish"
     },
     "dependencies": {
         "commander": "^12.0.0",

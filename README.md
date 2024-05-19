@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-   Get started with the <a rel="noopener noreferrer" target="_blank" href="https://ev0.vercel.app">EV0 Stack</a> by running <code>npx ev0@latest init</code>
+   Get started with the <a rel="noopener noreferrer" target="_blank" href="https://ev0.vercel.app">EV0 Stack</a> by running <code>npx create-ev0-app@latest init</code>
 </p>
 
 <div align="center">
@@ -30,15 +30,17 @@
 </picture>
 </p>
 
+> A huge shoutout to [create-t3-app](https://github.com/t3-oss/create-t3-app) for the inspiration and the idea to create this project. This project was only possible because of the amazing work done by [Theo](https://www.youtube.com/@t3dotgg).
+
 ## Table of Contents
 
--   [Table of Contents](#table-of-contents)
--   [The EV0 Stack](#the-ev0-stack)
--   [What is EV0?](#what-is-ev0)
--   [Why EV0?](#why-ev0)
--   [Getting Started](#getting-started)
--   [Community](#community)
--   [Contributors](#contributors)
+- [Table of Contents](#table-of-contents)
+- [The EV0 Stack](#the-ev0-stack)
+- [What is EV0?](#what-is-ev0)
+- [Why EV0?](#why-ev0)
+- [Getting Started](#getting-started)
+- [Community](#community)
+- [Contributors](#contributors)
 
 ## The EV0 Stack
 
@@ -80,18 +82,22 @@ There are many reasons to use the EV0 Stack, but here are a few of the most comp
 To get started with the EV0 Stack, you can run the following command:
 
 ```bash
-npx ev0@latest init
+npx create-ev0-app@latest init
 # or
-yarn create ev0@latest init
+yarn create create-ev0-app@latest init
 # or
-pnpm dlx ev0@latest init
+pnpm dlx create-ev0-app@latest init
 #or
-bunx --bun ev0@latest init
+bunx --bun create-ev0-app@latest init
 ```
 
 This will prompt you to choose a project name, select the features you want to include (e.g., authentication, database, etc.), and configure the project settings. Once you've answered all the questions, the command will generate a new project in the current directory with the specified settings.
 
-> To quickly setup a new project with the default settings, you can run `npx ev0@latest init -d`.
+To quickly setup a new project with the default settings, you can run the following command:
+
+```bash
+npx create-ev0-app@latest -d
+```
 
 ## Community
 
