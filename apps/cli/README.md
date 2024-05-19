@@ -7,13 +7,13 @@ The best way to start your next Next.js project in a type-safe environment. Get 
 To get started with the EV0 Stack, you can run the following command:
 
 ```bash
-npx ev0@latest init
+npx create-ev0-app@latest init
 # or
-yarn create ev0@latest init
+yarn create create-ev0-app@latest init
 # or
-pnpm dlx ev0@latest init
-#or
-bunx --bun ev0@latest init
+pnpm dlx create-ev0-app@latest init
+# or
+bunx create-ev0-app@latest init
 ```
 
 ## The EV0 Stack

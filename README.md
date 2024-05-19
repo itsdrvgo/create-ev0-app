@@ -87,8 +87,8 @@ npx create-ev0-app@latest init
 yarn create create-ev0-app@latest init
 # or
 pnpm dlx create-ev0-app@latest init
-#or
-bunx --bun create-ev0-app@latest init
+# or
+bunx create-ev0-app@latest init
 ```
 
 This will prompt you to choose a project name, select the features you want to include (e.g., authentication, database, etc.), and configure the project settings. Once you've answered all the questions, the command will generate a new project in the current directory with the specified settings.
