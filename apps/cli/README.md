@@ -1,6 +1,6 @@
 # EV0 App
 
-The best way to start your next Next.js project in a type-safe environment. Get started with the EV0 Stack by running `npx ev0@latest init`
+The best way to start your next Next.js project in a type-safe environment. Get started with the EV0 Stack by running `npx create-ev0-app@latest init`
 
 ## Getting Started
 
