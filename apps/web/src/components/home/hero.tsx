@@ -12,12 +12,12 @@ export function Hero({ className, ...props }: GenericProps) {
     return (
         <section
             className={cn(
-                "relative flex min-h-[calc(100vh-4.5rem)] items-center justify-center",
+                "relative flex min-h-[calc(100vh-4.5rem)] items-center justify-center p-5",
                 className
             )}
             {...props}
         >
-            <div className="z-10 flex max-w-6xl flex-col items-center gap-8 px-2 md:gap-10">
+            <div className="z-10 flex max-w-6xl flex-col items-center gap-8 md:gap-10">
                 <Image src={EV0Text} alt="EV0" width={200} height={200} />
 
                 <p className="text-balance text-center text-3xl md:text-5xl">

@@ -11,7 +11,7 @@ export function Footer({ className }: GenericProps) {
                 className
             )}
         >
-            <div className="flex w-full max-w-6xl items-center justify-between">
+            <div className="flex w-full max-w-6xl flex-col-reverse items-center justify-between gap-5 md:flex-row">
                 <p className="text-sm">
                     <span>© {new Date().getFullYear()} </span>
                     <Link
@@ -26,10 +26,10 @@ export function Footer({ className }: GenericProps) {
 
                 <Link
                     href="https://vercel.com?utm_source=ev0&utm_campaign=oss"
-                    className="flex items-center gap-4"
+                    className="flex items-center gap-2 md:gap-4"
                     target="_blank"
                 >
-                    <p className="flex flex-col text-end text-xs">
+                    <p className="flex gap-1 text-end text-xs md:flex-col md:gap-0">
                         <span>Powered</span>
                         <span>by</span>
                     </p>

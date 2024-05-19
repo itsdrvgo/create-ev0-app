@@ -72,12 +72,16 @@ export function NavbarMob() {
             <Link
                 href={REPO_URL}
                 target="_blank"
-                className="mt-5 flex items-center gap-4 rounded-md bg-primary p-2 py-3"
+                className="mt-5 flex items-center justify-between gap-4 rounded-md bg-primary p-3"
             >
-                <Icons.star className="size-5" />
-                <span className="text-white">
-                    {convertNumberToShortForm(starCount)} - Star us on GitHub
-                </span>
+                <span>Star us on GitHub</span>
+
+                <div className="flex items-center gap-2">
+                    <span className="text-white">
+                        {convertNumberToShortForm(starCount)}
+                    </span>
+                    <Icons.star className="size-5" />
+                </div>
             </Link>
         </ul>
     );
