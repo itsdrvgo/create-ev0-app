@@ -1,12 +1,30 @@
 {
     "name": "ev0-cli",
     "module": "src/index.ts",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "type": "module",
     "main": "dist/index.js",
     "bin": {
         "ev0": "dist/index.js"
     },
+    "author": {
+        "name": "itsdrvgo",
+        "url": "https://itsdrvgo.me/"
+    },
+    "keywords": [
+        "cli",
+        "ev0",
+        "nextjs",
+        "create-next-app",
+        "next",
+        "react",
+        "react-framework",
+        "reactjs",
+        "typescript",
+        "t3-app",
+        "t3"
+    ],
+    "license": "MIT",
     "scripts": {
         "dev": "bun run src/index.ts",
         "build": "bun run build.ts"
