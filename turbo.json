@@ -17,5 +17,6 @@
             "dependsOn": ["^build"],
             "persistent": true
         }
-    }
+    },
+    "globalEnv": ["PORT", "VERCEL_URL"]
 }
