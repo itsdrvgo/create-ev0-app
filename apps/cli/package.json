@@ -1,6 +1,6 @@
 {
     "name": "create-ev0-app",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "The best CLI for creating, building, and deploying your Next.js apps",
     "license": "MIT",
     "repository": {
