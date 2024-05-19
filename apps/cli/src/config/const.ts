@@ -8,4 +8,4 @@ export const PKG_ROOT = path.join(distPath, "../");
 export const DEFAULT_PROJECT_NAME = "ev0-app";
 export const EV0 = "ev0";
 
-export const INTRO_TITLE = "EV0 App CLI";
+export const INTRO_TITLE = "CREATE EV0 APP";

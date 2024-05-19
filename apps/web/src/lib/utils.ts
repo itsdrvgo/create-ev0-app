@@ -41,7 +41,7 @@ export function generateInitCommand(packageManager: PackageManager) {
 
     switch (packageManager) {
         case PackageManager.BUN:
-            return `bunx --bun ${command}`;
+            return `bunx ${command}`;
         case PackageManager.NPM:
             return `npx ${command}`;
         case PackageManager.Yarn:
