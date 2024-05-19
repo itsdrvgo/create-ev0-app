@@ -49,7 +49,7 @@
         --popover: 240, 8%, 5%;
         --popover-foreground: 300, 92%, 95%;
 
-        --primary: 272, 77%, 47%;
+        --primary: 272, 77%, 36%;
         --primary-foreground: 0, 0%, 100%;
 
         --secondary: 103, 55%, 53%;
@@ -103,10 +103,10 @@
     }
 
     ::-webkit-scrollbar-thumb {
-        @apply rounded-md bg-accent;
+        @apply rounded-md bg-muted;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-        @apply bg-accent/80;
+        @apply bg-muted/80;
     }
 }
