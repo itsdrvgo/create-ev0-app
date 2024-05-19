@@ -5,13 +5,4 @@ await Bun.build({
     splitting: true,
     minify: true,
     format: "esm",
-    external: [
-        "commander",
-        "execa",
-        "gradient-string",
-        "inquirer",
-        "loading-cli",
-        "zod",
-        "./package.json",
-    ],
 });
