@@ -16,10 +16,10 @@ program
     .option("-e, --empty", "create an empty project")
     .option("-n, --name <name>", "project name")
     .option("-sba, --supabase-auth", "use Supabase (Auth)")
-    .option("-cla, --clerk", "use Clerk")
+    .option("-cla, --clerk", "use Clerk (Coming soon)")
     .option("-sbdb, --supabase-db", "use Supabase (Database)")
-    .option("-ps, --planetscale", "use PlanetScale")
-    .option("-mongo, --mongodb", "use MongoDB")
+    .option("-ps, --planetscale", "use PlanetScale (Coming soon)")
+    .option("-mongo, --mongodb", "use MongoDB (Coming soon)")
     .option("-tw, --tailwindcss", "use Tailwind CSS")
     .option("-shad, --shadcn", "use ShadCN UI")
     .option("-trpc, --trpc", "use tRPC")
@@ -116,7 +116,11 @@ program
                 message: "Choose your authentication provider:",
                 choices: [
                     { name: "Supabase", value: "supabase" },
-                    { name: "Clerk", value: "clerk" },
+                    {
+                        name: "Clerk",
+                        value: "clerk",
+                        disabled: "Coming soon",
+                    },
                     { name: "None", value: "none" },
                 ],
                 default: "supabase",
@@ -127,8 +131,16 @@ program
                 message: "Choose your database provider:",
                 choices: [
                     { name: "Supabase (Postgres)", value: "supabase" },
-                    { name: "PlanetScale (MySQL)", value: "planetscale" },
-                    { name: "MongoDB", value: "mongodb" },
+                    {
+                        name: "PlanetScale (MySQL)",
+                        value: "planetscale",
+                        disabled: "Coming soon",
+                    },
+                    {
+                        name: "MongoDB",
+                        value: "mongodb",
+                        disabled: "Coming soon",
+                    },
                     { name: "None", value: "none" },
                 ],
                 default: "supabase",
