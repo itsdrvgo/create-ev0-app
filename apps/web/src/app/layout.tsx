@@ -1,9 +1,9 @@
-import ClientProvider from "@/components/providers/client";
 import { siteConfig } from "@/config/site";
 import { cn, getAbsoluteURL } from "@/lib/utils";
 import { LayoutProps } from "@/types";
 import { Metadata } from "next";
 import "./globals.css";
+import { ClientProvider } from "@/components/providers";
 import { Toaster } from "@/components/ui/sonner";
 import { Days_One } from "next/font/google";
 

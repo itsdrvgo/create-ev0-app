@@ -14,4 +14,8 @@ export const siteConfig: SiteConfig = {
         "typescript",
         "vercel",
     ],
+    links: {
+        discord: "https://dsc.gg/drvgo/",
+        drvgo: "https://itsdrvgo.me/",
+    },
 };

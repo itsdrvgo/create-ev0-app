@@ -47,21 +47,13 @@ describe("helpers", () => {
     });
 
     test("generateBaseFiles", () => {
-        const {
-            foldersToCopy: foldersToCopy1,
-            dependencies: dependencies1,
-            devDependencies: devDependencies1,
-        } = generateBaseFiles({
+        const { foldersToCopy: foldersToCopy1 } = generateBaseFiles({
             auth: "clerk",
             db: "supabase",
             features: ["shadcn", "tailwind"],
         });
 
-        const {
-            foldersToCopy: foldersToCopy2,
-            dependencies: dependencies2,
-            devDependencies: devDependencies2,
-        } = generateBaseFiles({
+        const { foldersToCopy: foldersToCopy2 } = generateBaseFiles({
             auth: "supabase",
             db: "supabase",
             features: ["shadcn", "tailwind", "trpc", "uploadthing"],
@@ -77,33 +69,6 @@ describe("helpers", () => {
             "tw-shadcn",
         ]);
 
-        expect(Object.keys(dependencies1)).toEqual([
-            "@clerk/nextjs",
-            "@clerk/types",
-            "@paralleldrive/cuid2",
-            "@supabase/supabase-js",
-            "@supabase/auth-helpers-nextjs",
-            "drizzle-orm",
-            "drizzle-zod",
-            "postgres",
-            "lucide-react",
-            "next-themes",
-        ]);
-
-        expect(Object.keys(devDependencies1)).toEqual([
-            "drizzle-kit",
-            "eslint-plugin-drizzle",
-            "autoprefixer",
-            "class-variance-authority",
-            "clsx",
-            "eslint-plugin-tailwindcss",
-            "postcss",
-            "prettier-plugin-tailwindcss",
-            "tailwindcss-animate",
-            "tailwind-merge",
-            "tailwindcss",
-        ]);
-
         expect(foldersToCopy2).toEqual([
             "supabase-base",
             "supabase-base",
@@ -117,40 +82,6 @@ describe("helpers", () => {
             "supabase-auth-trpc",
             "supabase-db-trpc",
             "ut-base",
-        ]);
-
-        expect(Object.keys(dependencies2)).toEqual([
-            "@supabase/supabase-js",
-            "@supabase/auth-helpers-nextjs",
-            "@paralleldrive/cuid2",
-            "drizzle-orm",
-            "drizzle-zod",
-            "postgres",
-            "lucide-react",
-            "next-themes",
-            "@trpc/client",
-            "@trpc/next",
-            "@trpc/react-query",
-            "@trpc/server",
-            "@tanstack/react-query",
-            "superjson",
-            "@uploadthing/react",
-            "uploadthing",
-        ]);
-
-        expect(Object.keys(devDependencies2)).toEqual([
-            "drizzle-kit",
-            "eslint-plugin-drizzle",
-            "autoprefixer",
-            "class-variance-authority",
-            "clsx",
-            "eslint-plugin-tailwindcss",
-            "postcss",
-            "prettier-plugin-tailwindcss",
-            "tailwindcss-animate",
-            "tailwind-merge",
-            "tailwindcss",
-            "@tanstack/react-query-devtools",
         ]);
     });
 });

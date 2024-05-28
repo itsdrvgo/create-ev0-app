@@ -34,13 +34,13 @@
 
 ## Table of Contents
 
-- [Table of Contents](#table-of-contents)
-- [The EV0 Stack](#the-ev0-stack)
-- [What is EV0?](#what-is-ev0)
-- [Why EV0?](#why-ev0)
-- [Getting Started](#getting-started)
-- [Community](#community)
-- [Contributors](#contributors)
+-   [Table of Contents](#table-of-contents)
+-   [The EV0 Stack](#the-ev0-stack)
+-   [What is EV0?](#what-is-ev0)
+-   [Why EV0?](#why-ev0)
+-   [Getting Started](#getting-started)
+-   [Community](#community)
+-   [Contributors](#contributors)
 
 ## The EV0 Stack
 
@@ -53,7 +53,6 @@ The EV0 Stack is a full-stack TypeScript framework that helps you build fast, ro
 -   **[tRPC](https://trpc.io/)**: A TypeScript-first framework for building scalable and type-safe APIs.
 -   **[Supabase](https://supabase.io/)**: An open-source alternative to Firebase that provides a real-time database and authentication system.
 -   **[Clerk (Coming Soon)](https://clerk.com/)**: A user authentication and authorization service that provides a secure and customizable login experience.
--   **[PlanetScale (Coming Soon)](https://planetscale.com/)**: A serverless database platform that provides a scalable and reliable database solution.
 -   **[MongoDB (Coming Soon)](https://www.mongodb.com/)**: A NoSQL database that provides a flexible and scalable data storage solution.
 -   **[Drizzle](https://orm.drizzle.team/)**: A TypeScript-first ORM that provides a type-safe and efficient way to interact with databases.
 -   **[Prisma (Coming Soon)](https://www.prisma.io/)**: A modern database toolkit that provides a type-safe and efficient way to interact with databases.

@@ -2,16 +2,15 @@ import { LayoutProps } from "@/types";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: {
-        default: "EV0",
-        template: "%s | EV0",
-    },
-    description:
-        "The best CLI for creating, building, and deploying your Next.js apps.",
+    title: "Home",
 };
 
 function Layout({ children }: LayoutProps) {
-    return <main className="main_container">{children}</main>;
+    return (
+        <div className="relative flex min-h-screen flex-col">
+            <main className="flex flex-1 flex-col">{children}</main>
+        </div>
+    );
 }
 
 export default Layout;

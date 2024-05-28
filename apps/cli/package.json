@@ -1,6 +1,6 @@
 {
     "name": "create-ev0-app",
-    "version": "0.1.2",
+    "version": "0.2.0",
     "description": "The best CLI for creating, building, and deploying your Next.js apps",
     "license": "MIT",
     "repository": {
@@ -50,7 +50,6 @@
         "build": "bun run build.ts",
         "lint": "eslint . --ext .ts",
         "lint:fix": "bun run lint --fix",
-        "release": "changeset version",
         "pub:beta": "bun run build && npm publish --tag beta",
         "pub:next": "bun run build && npm publish --tag next",
         "pub:release": "bun run build && npm publish"

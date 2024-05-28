@@ -32,9 +32,9 @@ export const features: Feature[] = [
         href: "https://trpc.io/",
     },
     {
-        title: "Supabase",
+        title: "Supabase (Auth)",
         description:
-            "An open-source Firebase alternative with a Postgres database",
+            "The open source Firebase alternative. Instantly add authentication to your Next.js apps.",
         href: "https://supabase.com/",
     },
     {
@@ -42,14 +42,12 @@ export const features: Feature[] = [
         description:
             "A developer-first authentication and user management service.",
         href: "https://clerk.com/",
-        isDisabled: true,
     },
     {
-        title: "PlanetScale",
+        title: "Supabase (Database)",
         description:
-            "A serverless MySQL-compatible database platform for developers.",
-        href: "https://planetscale.com/",
-        isDisabled: true,
+            "The open source Firebase alternative. Easily add a Postgres database to your Next.js apps.",
+        href: "https://supabase.com/",
     },
     {
         title: "MongoDB",

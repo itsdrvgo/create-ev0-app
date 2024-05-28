@@ -1,8 +1,16 @@
 import { siteConfig } from "@/config/site";
-import { getAbsoluteURL } from "@/lib/utils";
+import { cn, getAbsoluteURL } from "@/lib/utils";
 import { LayoutProps } from "@/types";
 import { Metadata } from "next";
 import "./globals.css";
+import { ClientProvider } from "@/components/providers";
+import { Toaster } from "@/components/ui/sonner";
+import { Days_One } from "next/font/google";
+
+const font = Days_One({
+    weight: ["400"],
+    subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
     title: {
@@ -54,7 +62,17 @@ export default function RootLayout({ children }: LayoutProps) {
     return (
         <html lang="en" suppressHydrationWarning>
             <head />
-            <body>{children}</body>
+            <body
+                className={cn(
+                    font.className,
+                    "min-h-screen overflow-x-hidden antialiased"
+                )}
+            >
+                <ClientProvider>
+                    {children}
+                    <Toaster />
+                </ClientProvider>
+            </body>
         </html>
     );
 }

@@ -2,16 +2,17 @@ import { execSync } from "child_process";
 import fs from "fs";
 import path from "path";
 import pkg from "@/../package.json";
-import { INTRO_TITLE, PKG_ROOT } from "@/config/const";
+import { INTRO_TITLE, PACKAGE_MANAGERS, PKG_ROOT } from "@/config/const";
 import {
     CLERK_SECRET_KEY,
     generateDbUrlEnv,
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+    SVIX_SECRET,
     UPLOADTHING_APP_ID,
     UPLOADTHING_SECRET,
 } from "@/config/envs";
 import { PACKAGES } from "@/config/packages";
-import type { Dependency, PACKAGE_MANAGERS } from "@/types";
+import type { Dependency } from "@/types";
 import { execa } from "execa";
 import gs from "gradient-string";
 import type { AnswerData } from "../validation/answer";
@@ -65,6 +66,7 @@ export async function generateEnvs({
             ...envs,
             NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
             CLERK_SECRET_KEY,
+            SVIX_SECRET,
         };
     else if (auth === "supabase")
         envs = {
@@ -72,12 +74,7 @@ export async function generateEnvs({
             ...generateDbUrlEnv("supabase"),
         };
 
-    if (db === "planetscale")
-        envs = {
-            ...envs,
-            ...generateDbUrlEnv("planetscale"),
-        };
-    else if (db === "mongodb")
+    if (db === "mongodb")
         envs = {
             ...envs,
             ...generateDbUrlEnv("mongodb"),
@@ -205,7 +202,7 @@ export function generateBaseFiles({
             rawDevDeps.push(PACKAGES.SUPABASEAUTH.packages.devDependencies);
             break;
         case "clerk":
-            foldersToCopy.push("clerk-auth");
+            foldersToCopy.push("clerk-base");
             rawDeps.push(PACKAGES.CLERK.packages.dependencies);
             rawDevDeps.push(PACKAGES.CLERK.packages.devDependencies);
             break;
@@ -213,15 +210,12 @@ export function generateBaseFiles({
 
     switch (db) {
         case "supabase":
-            foldersToCopy.push("supabase-base", "supabase-db", "drizzle-base");
+            foldersToCopy.push("supabase-base", "drizzle-base");
+
+            if (auth === "clerk") foldersToCopy.push("clerk-drizzle");
+
             rawDeps.push(PACKAGES.SUPABASEDB.packages.dependencies);
             rawDevDeps.push(PACKAGES.SUPABASEDB.packages.devDependencies);
-            if (features.includes("tailwind")) foldersToCopy.push("tw-drizzle");
-            break;
-        case "planetscale":
-            foldersToCopy.push("planetscale-db");
-            rawDeps.push(PACKAGES.PLANETSCALEDB.packages.dependencies);
-            rawDevDeps.push(PACKAGES.PLANETSCALEDB.packages.devDependencies);
             break;
         case "mongodb":
             foldersToCopy.push("mongodb-db");
@@ -230,29 +224,19 @@ export function generateBaseFiles({
             break;
     }
 
-    if (features.includes("tailwind") && features.includes("shadcn")) {
-        foldersToCopy.push("tw-base", "tw-shadcn");
-        rawDeps.push(PACKAGES.SHADCN.packages.dependencies);
-        rawDevDeps.push(PACKAGES.SHADCN.packages.devDependencies);
-    } else {
-        if (features.includes("tailwind")) {
-            foldersToCopy.push("tw-base");
-            rawDeps.push(PACKAGES.TAILWIND.packages.dependencies);
-            rawDevDeps.push(PACKAGES.TAILWIND.packages.devDependencies);
-        }
-
-        if (features.includes("shadcn")) {
-            foldersToCopy.push("tw-shadcn");
-            rawDeps.push(PACKAGES.SHADCN.packages.dependencies);
-            rawDevDeps.push(PACKAGES.SHADCN.packages.devDependencies);
-        }
-    }
-
     if (features.includes("trpc")) {
         foldersToCopy.push("trpc-base");
-        if (features.includes("shadcn")) foldersToCopy.push("trpc-tw-shadcn");
-        if (auth === "supabase") foldersToCopy.push("supabase-auth-trpc");
-        if (db === "supabase") foldersToCopy.push("supabase-db-trpc");
+
+        switch (auth) {
+            case "supabase":
+                foldersToCopy.push("supabase-auth-trpc");
+                if (db === "supabase") foldersToCopy.push("supabase-db-trpc");
+                break;
+            case "clerk":
+                foldersToCopy.push("clerk-trpc");
+                if (db === "supabase") foldersToCopy.push("clerk-drizzle-trpc");
+                break;
+        }
 
         rawDeps.push(PACKAGES.TRPC.packages.dependencies);
         rawDevDeps.push(PACKAGES.TRPC.packages.devDependencies);
@@ -315,26 +299,9 @@ export async function writeDependencies({
     return packageJson;
 }
 
-export async function insertUILib(foldersToCopy: string[], dest: string) {
-    if (foldersToCopy.includes("tw-base")) {
-        const src = getSrc("template/tw-base");
-        await copyDir(src, dest);
-    }
-
-    if (foldersToCopy.includes("tw-shadcn")) {
-        const src = getSrc("template/tw-shadcn");
-        await copyDir(src, dest);
-    }
-}
-
 export async function insertTRPC(foldersToCopy: string[], dest: string) {
     if (foldersToCopy.includes("trpc-base")) {
         const src = getSrc("template/trpc-base");
-        await copyDir(src, dest);
-    }
-
-    if (foldersToCopy.includes("trpc-tw-shadcn")) {
-        const src = getSrc("template/trpc-tw-shadcn");
         await copyDir(src, dest);
     }
 }
@@ -352,11 +319,6 @@ export async function insertSupabase(foldersToCopy: string[], dest: string) {
         await copyDir(src, dest);
     }
 
-    if (foldersToCopy.includes("supabase-db")) {
-        const src = getSrc("template/supabase-db");
-        await copyDir(src, dest);
-    }
-
     if (foldersToCopy.includes("supabase-auth-trpc")) {
         const src = getSrc("template/supabase-auth-trpc");
         await copyDir(src, dest);
@@ -368,32 +330,66 @@ export async function insertSupabase(foldersToCopy: string[], dest: string) {
     }
 }
 
-export async function insertDrizzle(foldersToCopy: string[], dest: string) {
-    if (foldersToCopy.includes("drizzle-base")) {
-        const src = getSrc("template/drizzle-base");
+export async function insertClerk(foldersToCopy: string[], dest: string) {
+    if (foldersToCopy.includes("clerk-base")) {
+        const src = getSrc("template/clerk-base");
         await copyDir(src, dest);
     }
 
-    if (foldersToCopy.includes("tw-drizzle")) {
-        const src = getSrc("template/tw-drizzle");
+    if (foldersToCopy.includes("clerk-trpc")) {
+        const src = getSrc("template/clerk-trpc");
         await copyDir(src, dest);
+    }
+
+    if (foldersToCopy.includes("clerk-drizzle")) {
+        const src = getSrc("template/clerk-drizzle");
+        await copyDir(src, dest);
+    }
+
+    if (foldersToCopy.includes("clerk-drizzle-trpc")) {
+        const src = getSrc("template/clerk-drizzle-trpc");
+        await copyDir(src, dest);
+    }
+}
+
+export async function insertDrizzle(
+    foldersToCopy: string[],
+    dest: string,
+    packageJson: any
+) {
+    if (foldersToCopy.includes("drizzle-base")) {
+        const src = getSrc("template/drizzle-base");
+        await copyDir(src, dest);
+
+        packageJson.scripts = {
+            ...packageJson.scripts,
+            postinstall: "drizzle-kit generate",
+            "db:push": "drizzle-kit push",
+            "db:introspect": "drizzle-kit introspect",
+            "db:studio": "drizzle-kit studio",
+        };
+
+        await fs.promises.writeFile(
+            path.join(dest, "package.json"),
+            JSON.stringify(packageJson, null, 2)
+        );
     }
 }
 
 export function getPackageManager() {
     try {
         execSync("bun --version", { stdio: "ignore" });
-        return "bun";
+        return PACKAGE_MANAGERS.BUN;
     } catch (e) {
         try {
             execSync("pnpm --version", { stdio: "ignore" });
-            return "pnpm";
+            return PACKAGE_MANAGERS.PNPM;
         } catch (e) {
             try {
                 execSync("yarn --version", { stdio: "ignore" });
-                return "yarn";
+                return PACKAGE_MANAGERS.YARN;
             } catch (e) {
-                return "npm";
+                return PACKAGE_MANAGERS.NPM;
             }
         }
     }
@@ -407,28 +403,28 @@ export async function installDependencies({
     projectPath: string;
 }) {
     switch (packageManager) {
-        case "npm":
+        case PACKAGE_MANAGERS.NPM:
             await execa(packageManager, ["install"], {
                 cwd: projectPath,
                 stderr: "inherit",
             });
             break;
 
-        case "yarn":
+        case PACKAGE_MANAGERS.YARN:
             await execa(packageManager, ["install"], {
                 cwd: projectPath,
                 stdout: "pipe",
             });
             break;
 
-        case "pnpm":
+        case PACKAGE_MANAGERS.PNPM:
             await execa(packageManager, ["install"], {
                 cwd: projectPath,
                 stdout: "pipe",
             });
             break;
 
-        case "bun":
+        case PACKAGE_MANAGERS.BUN:
             await execa(packageManager, ["install"], {
                 cwd: projectPath,
                 stdout: "inherit",

@@ -16,12 +16,9 @@ program
     .option("-e, --empty", "create an empty project")
     .option("-n, --name <name>", "project name")
     .option("-sba, --supabase-auth", "use Supabase (Auth)")
-    .option("-cla, --clerk", "use Clerk (Coming soon)")
+    .option("-cla, --clerk", "use Clerk (Auth)")
     .option("-sbdb, --supabase-db", "use Supabase (Database)")
-    .option("-ps, --planetscale", "use PlanetScale (Coming soon)")
     .option("-mongo, --mongodb", "use MongoDB (Coming soon)")
-    .option("-tw, --tailwindcss", "use Tailwind CSS")
-    .option("-shad, --shadcn", "use ShadCN UI")
     .option("-trpc, --trpc", "use tRPC")
     .option("-ut, --uploadthing", "use UploadThing (File Uploads)")
     .action(async (flags: FlagsData) => {
@@ -44,11 +41,8 @@ program
             clerk,
             // Database options
             supabaseDb,
-            planetscale,
             mongodb,
             // Feature options
-            tailwindcss,
-            shadcn,
             trpc,
             uploadthing,
         } = data;
@@ -63,7 +57,7 @@ program
                 name: DEFAULT_PROJECT_NAME,
                 auth: "supabase",
                 db: "supabase",
-                features: ["tailwind", "shadcn"],
+                features: [],
                 git: true,
                 install: true,
             });
@@ -79,16 +73,8 @@ program
         await createProject({
             name: name || DEFAULT_PROJECT_NAME,
             auth: supabaseAuth ? "supabase" : clerk ? "clerk" : "none",
-            db: supabaseDb
-                ? "supabase"
-                : planetscale
-                  ? "planetscale"
-                  : mongodb
-                    ? "mongodb"
-                    : "none",
+            db: supabaseDb ? "supabase" : mongodb ? "mongodb" : "none",
             features: [
-                ...(tailwindcss ? ["tailwind"] : []),
-                ...(shadcn ? ["shadcn"] : []),
                 ...(trpc ? ["trpc"] : []),
                 ...(uploadthing ? ["uploadthing"] : []),
             ] as InstallerData["features"],
@@ -116,11 +102,7 @@ program
                 message: "Choose your authentication provider:",
                 choices: [
                     { name: "Supabase", value: "supabase" },
-                    {
-                        name: "Clerk",
-                        value: "clerk",
-                        disabled: "Coming soon",
-                    },
+                    { name: "Clerk", value: "clerk" },
                     { name: "None", value: "none" },
                 ],
                 default: "supabase",
@@ -131,11 +113,6 @@ program
                 message: "Choose your database provider:",
                 choices: [
                     { name: "Supabase (Postgres)", value: "supabase" },
-                    {
-                        name: "PlanetScale (MySQL)",
-                        value: "planetscale",
-                        disabled: "Coming soon",
-                    },
                     {
                         name: "MongoDB",
                         value: "mongodb",
@@ -150,8 +127,6 @@ program
                 name: "features",
                 message: "Select additional features:",
                 choices: [
-                    { name: "Tailwind CSS", value: "tailwind" },
-                    { name: "ShadCN UI", value: "shadcn" },
                     { name: "tRPC", value: "trpc" },
                     {
                         name: "UploadThing (File Uploads)",

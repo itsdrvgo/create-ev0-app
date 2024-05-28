@@ -7,13 +7,7 @@ export function generateDbUrlEnv(db: AnswerData["db"]) {
             .string()
             .url()
             .regex(
-                ${
-                    db === "supabase"
-                        ? /postgres/
-                        : db === "planetscale"
-                          ? /mysql/
-                          : /mongodb/
-                }
+                ${db === "supabase" ? /postgres/ : /mongodb/}
             )
 `,
           }
@@ -37,4 +31,10 @@ export const NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY = `z
 `;
 
 export const CLERK_SECRET_KEY = `z.string().min(1, "Missing CLERK_SECRET_KEY")
+`;
+
+export const SVIX_SECRET = `z
+        .string()
+        .min(1, "Missing SVIX_SECRET")
+        .regex(/^whsec_/)
 `;

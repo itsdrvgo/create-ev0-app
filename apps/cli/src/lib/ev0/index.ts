@@ -10,10 +10,10 @@ import {
     getPackageManager,
     initializeGit,
     insertBaseFiles,
+    insertClerk,
     insertDrizzle,
     insertSupabase,
     insertTRPC,
-    insertUILib,
     insertUploadThing,
     installDependencies,
     writeDependencies,
@@ -42,15 +42,12 @@ export async function createProject({
     install,
     git,
 }: InstallerData) {
-    // TODO: Implement clerk, mongodb, planetscale
+    // TODO: Implement mongodb and prisma
 
     // Starts here
     // .
     // .
-    if (auth === "clerk") return console.error("Clerk is not supported yet!");
     if (db === "mongodb") return console.error("MongoDB is not supported yet!");
-    if (db === "planetscale")
-        return console.error("PlanetScale is not supported yet!");
     // .
     // .
     // Ends here
@@ -83,7 +80,7 @@ export async function createProject({
 
     const load3 = loading("Writing dependencies...").start();
 
-    await writeDependencies({
+    const packageJson = await writeDependencies({
         projectPath,
         dependencies,
         devDependencies,
@@ -93,11 +90,11 @@ export async function createProject({
 
     const load4 = loading("Inserting files...").start();
 
-    await insertUILib(foldersToCopy, projectPath);
     await insertTRPC(foldersToCopy, projectPath);
     await insertUploadThing(foldersToCopy, projectPath);
     await insertSupabase(foldersToCopy, projectPath);
-    await insertDrizzle(foldersToCopy, projectPath);
+    await insertClerk(foldersToCopy, projectPath);
+    await insertDrizzle(foldersToCopy, projectPath, packageJson);
     await constructEnvs({
         auth,
         db,

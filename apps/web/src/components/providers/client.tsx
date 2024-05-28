@@ -6,7 +6,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { useState } from "react";
 
-function ClientProvider({ children }: LayoutProps) {
+export function ClientProvider({ children }: LayoutProps) {
     const [queryClient] = useState(() => new QueryClient());
 
     return (
@@ -19,5 +19,3 @@ function ClientProvider({ children }: LayoutProps) {
         </QueryClientProvider>
     );
 }
-
-export default ClientProvider;

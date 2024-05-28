@@ -9,3 +9,10 @@ export const DEFAULT_PROJECT_NAME = "ev0-app";
 export const EV0 = "ev0";
 
 export const INTRO_TITLE = "CREATE EV0 APP";
+
+export enum PACKAGE_MANAGERS {
+    NPM = "npm",
+    YARN = "yarn",
+    PNPM = "pnpm",
+    BUN = "bun",
+}
