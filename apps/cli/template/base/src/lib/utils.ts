@@ -51,10 +51,12 @@ export function CResponse<T>({
     data?: T;
 }) {
     let code: number;
+    let status = false;
 
     switch (message) {
         case "OK":
             code = 200;
+            status = true;
             break;
         case "ERROR":
             code = 400;
@@ -70,6 +72,9 @@ export function CResponse<T>({
             break;
         case "BAD_REQUEST":
             code = 400;
+            break;
+        case "CONFLICT":
+            code = 409;
             break;
         case "TOO_MANY_REQUESTS":
             code = 429;
@@ -94,6 +99,7 @@ export function CResponse<T>({
             break;
         case "CREATED":
             code = 201;
+            status = true;
             break;
         case "BAD_GATEWAY":
             code = 502;
@@ -103,10 +109,16 @@ export function CResponse<T>({
             break;
     }
 
-    return NextResponse.json({
-        code,
-        message,
-        longMessage,
-        data,
-    });
+    return NextResponse.json(
+        {
+            status,
+            message,
+            longMessage,
+            data,
+        },
+        {
+            status: code,
+            statusText: message,
+        }
+    );
 }

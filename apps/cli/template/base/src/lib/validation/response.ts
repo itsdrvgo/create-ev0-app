@@ -7,6 +7,7 @@ export const responseMessages = z.union([
     z.literal("FORBIDDEN"),
     z.literal("NOT_FOUND"),
     z.literal("BAD_REQUEST"),
+    z.literal("CONFLICT"),
     z.literal("TOO_MANY_REQUESTS"),
     z.literal("INTERNAL_SERVER_ERROR"),
     z.literal("SERVICE_UNAVAILABLE"),

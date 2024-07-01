@@ -12,6 +12,7 @@ import {
     insertBaseFiles,
     insertClerk,
     insertDrizzle,
+    insertMongo,
     insertSupabase,
     insertTRPC,
     insertUploadThing,
@@ -42,16 +43,6 @@ export async function createProject({
     install,
     git,
 }: InstallerData) {
-    // TODO: Implement mongodb and prisma
-
-    // Starts here
-    // .
-    // .
-    if (db === "mongodb") return console.error("MongoDB is not supported yet!");
-    // .
-    // .
-    // Ends here
-
     const load1 = loading("Creating project folder...").start();
 
     const projectPath = path.join(process.cwd(), name);
@@ -95,6 +86,7 @@ export async function createProject({
     await insertSupabase(foldersToCopy, projectPath);
     await insertClerk(foldersToCopy, projectPath);
     await insertDrizzle(foldersToCopy, projectPath, packageJson);
+    await insertMongo(foldersToCopy, projectPath, packageJson);
     await constructEnvs({
         auth,
         db,

@@ -27,9 +27,9 @@ The EV0 Stack is a full-stack TypeScript framework that helps you build fast, ro
 -   **[tRPC](https://trpc.io/)**: A TypeScript-first framework for building scalable and type-safe APIs.
 -   **[Supabase](https://supabase.io/)**: An open-source alternative to Firebase that provides a real-time database and authentication system.
 -   **[Clerk](https://clerk.com/)**: A user authentication and authorization service that provides a secure and customizable login experience.
--   **[MongoDB (Coming Soon)](https://www.mongodb.com/)**: A NoSQL database that provides a flexible and scalable data storage solution.
+-   **[MongoDB](https://www.mongodb.com/)**: A NoSQL database that provides a flexible and scalable data storage solution.
 -   **[Drizzle](https://orm.drizzle.team/)**: A TypeScript-first ORM that provides a type-safe and efficient way to interact with databases.
--   **[Prisma (Coming Soon)](https://www.prisma.io/)**: A modern database toolkit that provides a type-safe and efficient way to interact with databases.
+-   **[Prisma](https://www.prisma.io/)**: A modern database toolkit that provides a type-safe and efficient way to interact with databases.
 -   **[UploadThing](https://uploadthing.com/)**: A file upload service that provides a secure and efficient way to upload files to the cloud.
 
 ## What is EV0?

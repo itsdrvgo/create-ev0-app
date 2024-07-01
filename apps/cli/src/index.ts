@@ -18,7 +18,7 @@ program
     .option("-sba, --supabase-auth", "use Supabase (Auth)")
     .option("-cla, --clerk", "use Clerk (Auth)")
     .option("-sbdb, --supabase-db", "use Supabase (Database)")
-    .option("-mongo, --mongodb", "use MongoDB (Coming soon)")
+    .option("-mongo, --mongodb", "use MongoDB")
     .option("-trpc, --trpc", "use tRPC")
     .option("-ut, --uploadthing", "use UploadThing (File Uploads)")
     .action(async (flags: FlagsData) => {
@@ -113,11 +113,7 @@ program
                 message: "Choose your database provider:",
                 choices: [
                     { name: "Supabase (Postgres)", value: "supabase" },
-                    {
-                        name: "MongoDB",
-                        value: "mongodb",
-                        disabled: "Coming soon",
-                    },
+                    { name: "MongoDB", value: "mongodb" },
                     { name: "None", value: "none" },
                 ],
                 default: "supabase",

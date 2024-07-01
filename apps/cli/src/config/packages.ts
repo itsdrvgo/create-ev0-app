@@ -61,10 +61,10 @@ export const PACKAGES = {
         name: "mongodb",
         packages: {
             dependencies: {
-                "@prisma/client": "^4.1.3",
+                "@prisma/client": "^5.16.1",
             },
             devDependencies: {
-                prisma: "^5.13.0",
+                prisma: "^5.16.1",
             },
         },
     },

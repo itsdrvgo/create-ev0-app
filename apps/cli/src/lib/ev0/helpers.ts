@@ -218,7 +218,17 @@ export function generateBaseFiles({
             rawDevDeps.push(PACKAGES.SUPABASEDB.packages.devDependencies);
             break;
         case "mongodb":
-            foldersToCopy.push("mongodb-db");
+            foldersToCopy.push("prisma-base");
+
+            switch (auth) {
+                case "clerk":
+                    foldersToCopy.push("clerk-prisma");
+                    break;
+                case "supabase":
+                    foldersToCopy.push("supabase-base");
+                    break;
+            }
+
             rawDeps.push(PACKAGES.MONGODB.packages.dependencies);
             rawDevDeps.push(PACKAGES.MONGODB.packages.devDependencies);
             break;
@@ -230,11 +240,37 @@ export function generateBaseFiles({
         switch (auth) {
             case "supabase":
                 foldersToCopy.push("supabase-auth-trpc");
-                if (db === "supabase") foldersToCopy.push("supabase-db-trpc");
+
+                switch (db) {
+                    case "supabase":
+                        foldersToCopy.push("supabase-db-trpc");
+                        break;
+                    case "mongodb":
+                        foldersToCopy.push("supabase-mongo-trpc");
+                        break;
+                }
                 break;
             case "clerk":
                 foldersToCopy.push("clerk-trpc");
-                if (db === "supabase") foldersToCopy.push("clerk-drizzle-trpc");
+
+                switch (db) {
+                    case "supabase":
+                        foldersToCopy.push("clerk-drizzle-trpc");
+                        break;
+                    case "mongodb":
+                        foldersToCopy.push("clerk-prisma-trpc");
+                        break;
+                }
+                break;
+            case "none":
+                switch (db) {
+                    case "supabase":
+                        foldersToCopy.push("supabase-trpc");
+                        break;
+                    case "mongodb":
+                        foldersToCopy.push("prisma-trpc");
+                        break;
+                }
                 break;
         }
 
@@ -348,6 +384,51 @@ export async function insertClerk(foldersToCopy: string[], dest: string) {
 
     if (foldersToCopy.includes("clerk-drizzle-trpc")) {
         const src = getSrc("template/clerk-drizzle-trpc");
+        await copyDir(src, dest);
+    }
+}
+
+export async function insertMongo(
+    foldersToCopy: string[],
+    dest: string,
+    packageJson: any
+) {
+    if (foldersToCopy.includes("prisma-base")) {
+        const src = getSrc("template/prisma-base");
+        await copyDir(src, dest);
+
+        packageJson.scripts = {
+            ...packageJson.scripts,
+            postinstall:
+                "prisma generate --schema=./src/lib/prisma/schema.prisma",
+            "db:push": "prisma db push",
+            "db:introspect": "prisma db pull",
+            "db:studio": "prisma studio",
+        };
+
+        await fs.promises.writeFile(
+            path.join(dest, "package.json"),
+            JSON.stringify(packageJson, null, 2)
+        );
+    }
+
+    if (foldersToCopy.includes("clerk-prisma")) {
+        const src = getSrc("template/clerk-prisma");
+        await copyDir(src, dest);
+    }
+
+    if (foldersToCopy.includes("prisma-trpc")) {
+        const src = getSrc("template/prisma-trpc");
+        await copyDir(src, dest);
+    }
+
+    if (foldersToCopy.includes("clerk-prisma-trpc")) {
+        const src = getSrc("template/clerk-prisma-trpc");
+        await copyDir(src, dest);
+    }
+
+    if (foldersToCopy.includes("supabase-mongo-trpc")) {
+        const src = getSrc("template/supabase-mongo-trpc");
         await copyDir(src, dest);
     }
 }

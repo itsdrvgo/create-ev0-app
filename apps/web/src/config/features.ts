@@ -54,7 +54,6 @@ export const features: Feature[] = [
         description:
             "A general purpose, document-based, distributed database built for modern application developers.",
         href: "https://www.mongodb.com/",
-        isDisabled: true,
     },
     {
         title: "Drizzle",
@@ -67,7 +66,6 @@ export const features: Feature[] = [
         description:
             "A modern database toolkit that makes working with databases easy.",
         href: "https://www.prisma.io/",
-        isDisabled: true,
     },
     {
         title: "UploadThing",

@@ -1,3 +1,6 @@
+import fs from "fs";
+import path from "path";
+
 await Bun.build({
     entrypoints: ["src/index.ts"],
     target: "node",
@@ -12,6 +15,16 @@ await Bun.build({
         "inquirer",
         "loading-cli",
         "zod",
-        "./package.json",
     ],
 });
+
+const shebang = "#!/usr/bin/env node\n";
+const distPath = path.join(__dirname, "dist/index.js");
+
+const isFilePresent = await fs.promises.exists(distPath);
+if (isFilePresent) {
+    const data = await fs.promises.readFile(distPath, "utf-8");
+    if (!data.startsWith(shebang)) {
+        await fs.promises.writeFile(distPath, shebang + data);
+    }
+}
